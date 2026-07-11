@@ -1,4 +1,4 @@
-//! Flux d'upgrade GRUL — proche d'Ubuntu : refresh → résumé → confirmation → apt.
+//! Flux d'upgrade GRUL — refresh → résumé → confirmation → apt.
 
 use crate::apt::{collect_upgrade_summary, run_refresh, run_upgrade, AptOptions};
 use crate::config::{write_channel_sources, GrulChannelConfig, PackageChannel};

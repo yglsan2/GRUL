@@ -2,14 +2,14 @@
 
 **Version 1.0 – Vision du projet**
 
-> **GRUL** est une marque : symbole de qualité, simplicité et confiance sur Debian.  
-> Ce document ne définit pas d'acronyme public — le nom **GRUL** identifie le projet et l'expérience utilisateur.
+> **GRUL** est une marque — le nom du projet et de ses outils sur Debian.  
+> Ce document ne définit pas d'acronyme public.
 
 ---
 
 ## 1. Présentation
 
-GRUL est une distribution GNU/Linux basée sur Debian ayant pour objectif de devenir la référence pour :
+GRUL est une distribution GNU/Linux basée sur Debian, pensée pour :
 
 - les machines virtuelles ;
 - les environnements de développement ;
@@ -18,7 +18,7 @@ GRUL est une distribution GNU/Linux basée sur Debian ayant pour objectif de dev
 - les étudiants en informatique.
 
 GRUL n'a pas vocation à remplacer Debian.  
-Il a vocation à devenir **la meilleure Debian** pour développer, expérimenter et administrer un système Linux.
+C'est une surcouche légère : les mêmes paquets, les mêmes habitudes, avec moins de friction pour l'admin courante.
 
 ## 2. Vision
 
@@ -51,7 +51,7 @@ L'utilisateur doit passer son temps à **développer**, **tester**, **apprendre*
 | Principe | Signification |
 |----------|---------------|
 | **Simplicité** | Une seule façon de faire les choses |
-| **Rapidité** | Chaque opération optimisée |
+| **Rapidité** | Opérations courtes, peu d'étapes |
 | **Automatisation** | Le système configure ce qui peut l'être |
 | **Compatibilité** | Un tutoriel Debian fonctionne sur GRUL |
 | **Transparence** | Chaque optimisation documentée |
@@ -101,7 +101,7 @@ Mises à jour rapides (canal **Current**) pour : kernel, Mesa, Firefox, Chromium
 - **Questions :** nom, utilisateur, mot de passe, usage (VM / Dev / Bureau / Serveur).
 - **Tout le reste :** automatique.
 
-## 11. Détection intelligente (premier démarrage)
+## 11. Détection automatique (premier démarrage)
 
 Détection : CPU, RAM, SSD, GPU, batterie, UEFI, hyperviseur, connexion.
 
@@ -112,7 +112,7 @@ Détection : CPU, RAM, SSD, GPU, batterie, UEFI, hyperviseur, connexion.
 | KVM | VirtIO |
 | Hyper-V | Services adaptés |
 
-## 12. GRUL CLI — commande unique
+## 12. GRUL CLI — `grul`
 
 ```bash
 grul <commande>
@@ -209,7 +209,7 @@ Chaque erreur : explication + solution + commande à exécuter.
 | Composant | Rôle |
 |-----------|------|
 | `grul-common` | Types, profils, détection VM |
-| `grul-cli` | Point d'entrée unique `grul` |
+| `grul-cli` | CLI principale `grul` |
 | `grul-center` | Interface graphique |
 | `grul-daemon` | Services arrière-plan |
 | `grul-update` | Canaux et apt |

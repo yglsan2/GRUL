@@ -1,6 +1,6 @@
 # GRUL CLI — `grul`
 
-Point d'entrée unique conforme au [Cahier des charges](CAHIER-DES-CHARGES.md).
+CLI principale, décrite dans le [Cahier des charges](CAHIER-DES-CHARGES.md).
 
 ## Principe
 
@@ -8,7 +8,7 @@ Point d'entrée unique conforme au [Cahier des charges](CAHIER-DES-CHARGES.md).
 grul <commande> [options]
 ```
 
-Une seule façon d'administrer le système. Les outils internes (`grul-detect`, `grul-tune`, …) restent disponibles pour les scripts et le packaging.
+Une façon d'administrer le système. Les outils internes (`grul-detect`, `grul-tune`, …) restent disponibles pour les scripts et le packaging.
 
 ## État d'implémentation (v0.3)
 
@@ -42,7 +42,7 @@ Une seule façon d'administrer le système. Les outils internes (`grul-detect`, 
 
 Légende : ✅ disponible · 🔶 partiel · 📋 planifié
 
-## Exemples VM (cas d'usage phare)
+## Exemples VM (usage fréquent)
 
 ```bash
 sudo bash scripts/vm-bootstrap.sh

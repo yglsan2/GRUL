@@ -8,4 +8,4 @@ Recommends: grul-snap (>= 0.1.0), btrfs-progs
 Suggests: grul-vm
 Maintainer: GRUL Project <grul@localhost>
 Description: GRUL Core — configuration et métapaquet
- Point d'entrée : commande grul. Compatible Debian totale.
+ Métapaquet des outils GRUL. Compatible Debian.

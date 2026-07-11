@@ -17,7 +17,7 @@ pub fn run_release_check() -> Result<(), String> {
         println!();
         println!("⚠ Nouvelle version GRUL disponible : {pending}");
         println!();
-        println!("Pour mettre à niveau (comme Ubuntu do-release-upgrade) :");
+        println!("Pour mettre à niveau vers une nouvelle version GRUL :");
         println!("  sudo grul-update release-upgrade");
         println!();
         println!("Cette opération mettra à jour les métapaquets grul-* et");

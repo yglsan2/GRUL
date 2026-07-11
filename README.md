@@ -1,43 +1,46 @@
 # GRUL
 
-**La meilleure Debian pour développer, expérimenter et administrer.**
+**Debian Stable, avec une couche en plus pour s'en occuper un peu.**
 
-GRUL est une surcouche sur **Debian Stable** — pas un remplacement. Bash, apt et systemd restent au cœur du système.
-
-> *Une commande. Zéro friction.*
+GRUL ne remplace pas Debian — il s'appuie dessus. Bash, apt et systemd restent là, comme vous les connaissez. L'idée : moins de friction au quotidien, surtout en VM, en labo ou pour du dev.
 
 ```bash
-grul doctor      # diagnostic + score /100
-sudo grul update # tout mettre à jour
+grul doctor       # un coup d'œil sur l'état du système
+sudo grul update  # mises à jour en une commande
 sudo grul optimize
 grul status
 ```
 
-## Pour qui ?
+## C'est quoi, concrètement ?
 
-VMs · dev · labos · étudiants · DevOps — voir [Cahier des charges](docs/CAHIER-DES-CHARGES.md).
+Une surcouche légère : profils de tuning, détection matérielle/VM, guest agents, une CLI unifiée (`grul`).  
+Pas de distro exotique — juste Debian, un peu mieux rangé pour ceux qui enchaînent les installs et les petits serveurs.
 
-## Modèle
+Public visé : VMs, machines de dev, labos, étudiants, DevOps.  
+Détails : [Cahier des charges](docs/CAHIER-DES-CHARGES.md).
+
+## Comment c'est organisé
 
 | Couche | Rôle |
 |--------|------|
 | **Debian Stable** | Base, sécurité, compatibilité |
-| **GRUL Core** | Outils, politique, profils |
-| **GRUL Current** | Apps & outils dev récents (opt-in) |
+| **GRUL Core** | Outils, profils, politique par défaut |
+| **GRUL Current** | Paquets plus récents, si vous le voulez (opt-in) |
 
-## Commande unique : `grul`
+## CLI `grul`
 
 | Commande | Action |
 |----------|--------|
 | `grul update` | Mise à jour complète |
-| `grul doctor` | Santé système |
-| `grul optimize` | Tuning auto |
-| `grul vm optimize` | Setup VM |
+| `grul doctor` | Diagnostic et score santé |
+| `grul optimize` | Tuning selon le profil |
+| `grul vm optimize` | Setup rapide pour une VM |
+| `grul install` | Installateur interactif |
 | `grul help` | Aide |
 
-Référence complète : [docs/CLI.md](docs/CLI.md)
+Liste complète : [docs/CLI.md](docs/CLI.md)
 
-## VM en 2 minutes
+## Démarrer sur une VM
 
 ```bash
 sudo bash scripts/vm-bootstrap.sh
@@ -45,14 +48,17 @@ grul doctor
 sudo grul update -y
 ```
 
-[Guide VM](docs/VM.md)
+Ou l'installateur guidé : `sudo grul install`  
+Guide : [docs/VM.md](docs/VM.md)
 
 ## Installation
 
 ```bash
+# Paquets .deb
 bash scripts/build-debs.sh
 sudo dpkg -i dist/debs/grul-*.deb
-# ou dev :
+
+# Depuis les sources (dev / test)
 sudo bash scripts/install-tools.sh --vm
 ```
 
@@ -60,4 +66,8 @@ sudo bash scripts/install-tools.sh --vm
 
 ## Licence
 
-GPL-3.0-or-later (outils GRUL). Paquets Debian : licences respectives.
+GPL-3.0-or-later (outils GRUL). Les paquets Debian embarqués gardent leurs licences respectives.
+
+---
+
+Projet jeune, en cours de construction — les retours et les PR sont les bienvenus.

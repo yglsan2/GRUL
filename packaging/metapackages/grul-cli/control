@@ -5,5 +5,5 @@ Priority: optional
 Architecture: amd64
 Depends: grul-detect (>= 0.1.0), grul-tune (>= 0.1.0), grul-update (>= 0.1.0), grul-doctor (>= 0.1.0)
 Maintainer: GRUL Project <grul@localhost>
-Description: GRUL — commande unique grul
- Interface unifiée : update, doctor, optimize, vm, help.
+Description: GRUL — CLI grul
+ Interface : update, doctor, optimize, vm, help.

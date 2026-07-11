@@ -3,7 +3,7 @@
 
 [profile]
 id = "vm-minimal"
-description = "VM optimisée — services réduits, guest agent, sécurité auto"
+description = "VM légère — services réduits, guest agent, sécurité auto"
 
 [sysctl]
 "vm.swappiness" = 10

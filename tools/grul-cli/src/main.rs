@@ -1,4 +1,4 @@
-//! GRUL — point d'entrée unique (marque GRUL, une commande : `grul`).
+//! GRUL — CLI principale (`grul`).
 
 mod dispatch;
 mod help_text;
@@ -11,9 +11,9 @@ use dispatch::run_command;
 #[command(
     name = "grul",
     version,
-    about = "GRUL — la meilleure Debian pour développer et administrer",
-    long_about = "Une seule commande pour installer, optimiser, mettre à jour et diagnostiquer.\n\
-                  Compatible Debian totale — bash, apt et systemd restent au cœur du système."
+    about = "GRUL — outils Debian pour dev, VMs et admin",
+    long_about = "Couche légère sur Debian Stable : installer, mettre à jour, diagnostiquer.\n\
+                  Bash, apt et systemd restent au cœur du système."
 )]
 struct Cli {
     #[command(subcommand)]
@@ -145,7 +145,7 @@ enum DriversAction {
 enum DoctorAction {
     /// Check rapide
     Quick,
-    /// Configuration optimale VM
+    /// Configuration de base pour une VM
     VmSetup {
         #[arg(long, short = 'y')]
         yes: bool,

@@ -87,7 +87,7 @@ pub fn print_report(report: &DoctorReport) {
 
     let recs = recommendations(report);
     if !recs.is_empty() {
-        println!("\nOptimisations recommandées :");
+        println!("\nSuggestions :");
         for (i, r) in recs.iter().take(3).enumerate() {
             println!("  {}. {r}", i + 1);
         }

@@ -13,7 +13,7 @@ use snap::{CreateOptions};
     version,
     about = "Snapshots Btrfs optionnels — complément à grul-update, jamais obligatoire",
     long_about = "Installez grul-snap seulement si vous voulez des rollbacks.\n\
-                  Sinon, grul-core + grul-update suffisent (comme Ubuntu classique)."
+                  Sinon, grul-core + grul-update suffisent pour le quotidien."
 )]
 struct Cli {
     #[command(subcommand)]

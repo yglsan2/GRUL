@@ -1,4 +1,4 @@
-//! Affichage du statut des mises à jour — style « Ubuntu Software Updater ».
+//! Affichage du statut des mises à jour.
 
 use crate::apt::{collect_upgrade_summary, UpgradeSummary};
 use crate::config::{read_release_version, GrulChannelConfig, PackageChannel};

@@ -44,7 +44,7 @@ GRUL **ne remplace pas** Debian. Il **orchestre** Debian :
 Le gain perçu vient surtout de :
 
 1. **Moins de scripts shell fragiles** → outils uniques, testés
-2. **Profils intelligents** → services inutiles désactivés, I/O adapté au SSD
+2. **Profils adaptés** → services inutiles désactivés, I/O adapté au SSD
 3. **Canaux clairs** → pas de mélange stable/backports/snap flatpak au hasard
 
 ## Composants détaillés

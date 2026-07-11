@@ -12,7 +12,7 @@ GRUL ne force **ni** les snapshots **ni** l'installation manuelle. Deux voies é
 | Installation | `apt install grul-core` | `apt install grul-core grul-snap` |
 | Obligatoire ? | Non (snap est **Recommends**, pas Depends) | Non |
 
-## Voie A — Classique (comme Ubuntu)
+## Voie A — Classique
 
 Pour la majorité des utilisateurs : mises à jour via `grul-update`, sans snapshot.
 
@@ -107,6 +107,6 @@ sudo bash scripts/install-tools.sh --snap   # avec grul-snap
 
 ## Philosophie
 
-- **grul-core** = expérience GRUL complète sans contrainte filesystem
+- **grul-core** = outils GRUL de base, sans contrainte filesystem
 - **grul-snap** = bonus sécurité pour Btrfs — jamais une dépendance dure
 - L'utilisateur choisit ; aucun chemin n'est « inférieur »

@@ -1,4 +1,4 @@
-//! Configuration automatique optimale pour machines virtuelles.
+//! Configuration automatique de base pour machines virtuelles.
 
 use crate::report::is_root;
 use grul_common::vm::{detect_vm, VirtKind};

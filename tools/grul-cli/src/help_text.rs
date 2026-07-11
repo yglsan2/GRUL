@@ -20,26 +20,25 @@ fn print_general() {
     println!(
         r#"GRUL — aide
 
-Une seule commande pour administrer votre Debian :
+Commandes courantes :
 
   grul doctor          Diagnostic et score santé
-  grul update          Mise à jour complète (recommandé)
-  grul optimize        Tuning automatique matériel
+  grul update          Mise à jour complète (souvent le plus simple)
+  grul optimize        Tuning selon le profil détecté
   grul status          État mises à jour + santé
   grul info            Version et profil
   grul vm detect       Détection hyperviseur
-  grul vm optimize     Setup VM optimal
+  grul vm optimize     Setup VM de base
   grul rollback        Restaurer snapshot (Btrfs)
   grul repair          Réparer apt/paquets
   grul drivers         Guest agents / pilotes VM
-  grul drivers install Installer guest tools
-  grul install         Installateur interactif (< 5 min)
+  grul install         Installateur interactif
   grul clean           Nettoyage apt
   grul uninstall       Retirer la couche GRUL
 
   grul help <cmd>      Aide détaillée
 
-GRUL n remplace pas apt ni systemd — il les orchestre.
+GRUL n remplace pas apt ni systemd — il les regroupe.
 Cahier des charges : docs/CAHIER-DES-CHARGES.md
 "#
     );
@@ -76,7 +75,7 @@ fn print_optimize() {
     println!(
         r#"grul optimize — tuning automatique
 
-  sudo grul optimize         Applique le profil recommandé (grul-detect → grul-tune)
+  sudo grul optimize         Applique le profil suggéré (grul-detect → grul-tune)
   sudo grul optimize -y      Sans confirmation
 
 Profils : vm-minimal, desktop-balanced, dev-performance, server-minimal, gaming-latency
@@ -89,7 +88,7 @@ fn print_vm() {
     println!(
         r#"grul vm — machines virtuelles
 
-  grul vm detect           Hyperviseur + profil recommandé
+  grul vm detect           Hyperviseur + profil suggéré
   sudo grul vm optimize    Profil vm-minimal + guest agent + sécurité auto
   grul vm clean            Nettoyage (apt clean)
 

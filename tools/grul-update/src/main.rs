@@ -13,9 +13,9 @@ use upgrade::{run_upgrade_flow, UpgradeFlowOptions};
 #[derive(Parser)]
 #[command(
     name = "grul-update",
-    about = "Mises à jour GRUL — expérience proche d'Ubuntu, canaux Core / Current / Edge",
+    about = "Mises à jour GRUL — canaux Core / Current / Edge",
     long_about = "Sans sous-commande : affiche le statut puis propose l'upgrade interactif.\n\
-                  Équivalent Ubuntu : apt update + apt upgrade + canaux GRUL."
+                  En pratique : apt update + apt upgrade, avec les canaux GRUL."
 )]
 struct Cli {
     #[command(subcommand)]
@@ -36,7 +36,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// État des mises à jour (comme le centre de mises à jour Ubuntu)
+    /// État des mises à jour disponibles
     Status,
 
     /// Actualiser les index APT uniquement (apt update)
@@ -57,7 +57,7 @@ enum Commands {
         skip_refresh: bool,
     },
 
-    /// Gérer le canal Edge (opt-in, comme les PPA Ubuntu)
+    /// Gérer le canal Edge (opt-in)
     Edge {
         #[command(subcommand)]
         action: EdgeAction,

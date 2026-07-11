@@ -223,7 +223,7 @@ fn print_human(r: &HardwareReport) {
         println!("VM      : non (bare metal)");
     }
     println!();
-    println!("Profil recommandé : {}", r.recommended_profile.as_str());
+    println!("Profil suggéré : {}", r.recommended_profile.as_str());
     println!();
     println!("Justification :");
     for line in &r.rationale {

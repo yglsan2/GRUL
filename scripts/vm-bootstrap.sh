@@ -48,7 +48,7 @@ if [[ "$GRUL_CHANNEL_VM" == "true" && -f "$ROOT/configs/grul-channel-vm.toml" ]]
   echo "    Canal VM appliqué (Core only, sécurité auto)"
 fi
 
-echo "==> Configuration VM optimale"
+echo "==> Configuration VM (profil vm-minimal)"
 grul-doctor vm-setup --yes
 
 echo ""

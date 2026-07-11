@@ -1,6 +1,6 @@
 # GRUL pour machines virtuelles
 
-GRUL vise à devenir la **distrib de référence pour les VMs** : Debian Stable sous le capot, couche GRUL légère par-dessus.
+GRUL est surtout pensé pour les **VMs** (Proxmox, KVM, cloud, labos) : Debian Stable en dessous, quelques outils GRUL au-dessus.
 
 ## Pourquoi GRUL en VM ?
 

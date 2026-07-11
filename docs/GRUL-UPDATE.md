@@ -10,7 +10,7 @@ GRUL ne remplace pas `apt`. Il **orchestre** les mises à jour avec trois canaux
 | **Current** | Firefox, LibreOffice, Mesa, kernel option | Actif (desktop) |
 | **Edge** | Go, Rust, Docker, kubectl | Opt-in |
 
-L'expérience vise celle d'**Ubuntu LTS** : un seul outil, un résumé clair, confirmation avant upgrade, sécurité automatisable.
+L'objectif : des mises à jour **guidées** — un outil, un résumé clair, confirmation avant upgrade, sécurité automatisable.
 
 ## Commandes
 
@@ -22,7 +22,7 @@ grul-update status
 
 Affiche la version GRUL, les canaux actifs, le nombre de mises à jour par canal et les correctifs Debian Security.
 
-### Mise à jour complète (comme « Installer les mises à jour » Ubuntu)
+### Mise à jour complète
 
 ```bash
 sudo grul-update upgrade
@@ -82,7 +82,7 @@ docker.io = "edge"
 
 Variable d'environnement dev : `GRUL_CHANNEL_CONFIG=configs/grul-channel.toml`
 
-## Sécurité automatique (Ubuntu-like)
+## Sécurité automatique
 
 ```bash
 sudo systemctl enable --now grul-update-security.timer

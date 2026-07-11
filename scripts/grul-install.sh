@@ -15,7 +15,7 @@ echo "╔═══════════════════════�
 echo "║   GRUL — installation interactive    ║"
 echo "╚══════════════════════════════════════╝"
 echo ""
-echo "Debian reste intact — GRUL ajoute une couche intelligente."
+echo "Debian reste intact — GRUL ajoute une couche légère d'outils."
 echo ""
 
 # --- Question 1 : nom de la machine ---

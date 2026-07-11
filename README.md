@@ -1,6 +1,8 @@
 # GRUL
 
-**Debian Stable, avec une couche en plus pour s'en occuper un peu.**
+**Debian amélioré, pour en faire une distribution, à la fois stable, rapide et moderne avec des surcouches de Go et de Rust, pour gagner en rapidité d'exécution et en modernité.**
+
+L'objectif de GRUL est de devenir la Distribution Linux la plus facile à utiliser pour les projets d'Administration Linux, de Dev et de DevOps, que ce soit en Desktop, ou en Machine Virtuelle. Pour ce faire, il faut donc que la configuration du système soit la plus rapide et efficace possible, de l'installation à la configuration (qui doivent se faire d'une manière limpide et automatisées), jusqu'aux mises à jour, aux utilisations et à la désinstallation, qui doivent aussi être limpides, faciles et très rapides) . 
 
 GRUL ne remplace pas Debian — il s'appuie dessus. Bash, apt et systemd restent là, comme vous les connaissez. L'idée : moins de friction au quotidien, surtout en VM, en labo ou pour du dev.
 

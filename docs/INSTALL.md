@@ -74,6 +74,18 @@ sudo grul-snap disable
 # grul-update continue de fonctionner normalement
 ```
 
+## Voie interactive — grul install (v0.2)
+
+Installateur en 4 questions (nom, utilisateur, mot de passe, usage) — objectif < 5 min :
+
+```bash
+sudo grul install
+# ou
+sudo bash scripts/grul-install.sh
+```
+
+Usages : VM, Dev, Bureau, Serveur — profil et guest agents appliqués automatiquement.
+
 ## Voie développement — install-tools.sh
 
 Sans paquets .deb, pour tester sur une VM :

@@ -53,6 +53,7 @@ install -m644 "$ROOT/configs/profiles/"*.toml /etc/grul/profiles/
 
 echo "==> Scripts GRUL"
 install -m755 "$ROOT/scripts/grul-firstboot.sh" /usr/share/grul/scripts/
+install -m755 "$ROOT/scripts/grul-install.sh" /usr/share/grul/scripts/
 install -m755 "$ROOT/scripts/uninstall-grul.sh" /usr/share/grul/scripts/
 install -m755 "$ROOT/scripts/vm-bootstrap.sh" /usr/share/grul/scripts/
 

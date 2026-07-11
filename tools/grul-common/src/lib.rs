@@ -1,5 +1,6 @@
 //! Types et chargement de profils partagés entre outils GRUL.
 
+pub mod drivers;
 pub mod vm;
 
 use serde::{Deserialize, Serialize};

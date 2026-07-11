@@ -74,6 +74,8 @@ enum Commands {
     Repair {
         #[arg(long)]
         dry_run: bool,
+        #[arg(long)]
+        vacuum_journal: bool,
     },
 
     /// Mesures performance (CPU, RAM, disque, réseau)
@@ -94,7 +96,10 @@ enum Commands {
     },
 
     /// Pilotes et guest agents
-    Drivers,
+    Drivers {
+        #[command(subcommand)]
+        action: Option<DriversAction>,
+    },
 
     /// État sécurité et mises à jour critiques
     Security,
@@ -117,10 +122,22 @@ enum Commands {
     /// Désinstallation propre de la couche GRUL
     Uninstall,
 
+    /// Installation interactive GRUL sur Debian (v0.2)
+    Install,
+
     /// Aide détaillée par commande
     Help {
         #[arg(value_name = "COMMANDE")]
         topic: Option<String>,
+    },
+}
+
+#[derive(Subcommand)]
+enum DriversAction {
+    /// Installe les guest agents selon l'hyperviseur détecté
+    Install {
+        #[arg(long, short = 'y')]
+        yes: bool,
     },
 }
 

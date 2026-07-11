@@ -2,7 +2,7 @@
 
 use crate::help_text;
 use crate::info;
-use crate::{Commands, DoctorAction, VmAction};
+use crate::{Commands, DoctorAction, DriversAction, VmAction};
 use std::process::{Command, ExitStatus};
 
 pub fn run_command(cmd: Commands) -> Result<(), String> {
@@ -74,18 +74,15 @@ pub fn run_command(cmd: Commands) -> Result<(), String> {
             }
         },
 
-        Commands::Repair { dry_run } => {
+        Commands::Repair { dry_run, vacuum_journal } => {
+            let mut args = vec!["repair"];
             if dry_run {
-                println!("[dry-run] grul repair — dpkg --configure -a, apt -f install");
-                return Ok(());
+                args.push("--dry-run");
             }
-            stub_impl(
-                "repair",
-                &[],
-                false,
-            )?;
-            exec_or_sudo("dpkg", &["--configure", "-a"])?;
-            exec_or_sudo("apt-get", &["install", "-f", "-y"])
+            if vacuum_journal {
+                args.push("--vacuum-journal");
+            }
+            exec_or_sudo("grul-doctor", &args)
         }
 
         Commands::Benchmark => stub("benchmark", "v0.4", "grul benchmark — CPU, RAM, SSD, boot time"),
@@ -106,18 +103,29 @@ pub fn run_command(cmd: Commands) -> Result<(), String> {
             exec_or_sudo("grul-snap", &args)
         }
 
-        Commands::Drivers => {
-            let vm = grul_common::vm::detect_vm();
-            if vm.is_virtual {
-                println!("Hyperviseur : {}", vm.kind.label());
-                println!("Guest agent QEMU : {}", if vm.qemu_guest_agent { "actif" } else { "inactif" });
-                println!();
-                println!("Optimiser : sudo grul vm optimize");
-            } else {
-                println!("Bare metal — pilotes via apt/Debian.");
-                println!("GPU : installez mesa-vulkan-drivers ou pilote propriétaire si besoin.");
+        Commands::Drivers { action } => match action {
+            None => {
+                let vm = grul_common::vm::detect_vm();
+                if vm.is_virtual {
+                    println!("Hyperviseur : {}", vm.kind.label());
+                    println!(
+                        "Guest agent QEMU : {}",
+                        if vm.qemu_guest_agent {
+                            "actif"
+                        } else {
+                            "inactif"
+                        }
+                    );
+                    println!();
+                    println!("Installer : sudo grul drivers install");
+                    println!("Optimiser : sudo grul vm optimize");
+                } else {
+                    println!("Bare metal — pilotes via apt/Debian.");
+                    println!("GPU : installez mesa-vulkan-drivers ou pilote propriétaire si besoin.");
+                }
+                Ok(())
             }
-            Ok(())
+            Some(DriversAction::Install { yes: _ }) => exec_or_sudo("grul-doctor", &["drivers", "install"]),
         }
 
         Commands::Security => exec("grul-update", &["upgrade", "--security-only", "--dry-run"]),
@@ -145,11 +153,40 @@ pub fn run_command(cmd: Commands) -> Result<(), String> {
 
         Commands::Uninstall => exec("grul-doctor", &["uninstall-guide"]),
 
+        Commands::Install => run_install_script(),
+
         Commands::Help { topic } => {
             help_text::print_help(topic.as_deref());
             Ok(())
         }
     }
+}
+
+fn run_install_script() -> Result<(), String> {
+    const CANDIDATES: &[&str] = &[
+        "/usr/share/grul/scripts/grul-install.sh",
+        "/usr/local/share/grul/scripts/grul-install.sh",
+    ];
+
+    for path in CANDIDATES {
+        if std::path::Path::new(path).is_file() {
+            return exec_or_sudo("bash", &[path]);
+        }
+    }
+
+    // Développement : script à côté du binaire compilé ou depuis le repo
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(bin_dir) = exe.parent() {
+            if let Some(root) = bin_dir.parent() {
+                let dev = root.join("share/grul/scripts/grul-install.sh");
+                if dev.is_file() {
+                    return exec_or_sudo("bash", &[dev.to_string_lossy().as_ref()]);
+                }
+            }
+        }
+    }
+
+    Err("grul-install.sh introuvable — installez grul-core ou clonez le dépôt GRUL".into())
 }
 
 fn run_full_update(yes: bool, dry_run: bool) -> Result<(), String> {

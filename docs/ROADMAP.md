@@ -16,8 +16,8 @@ Alignée sur le [Cahier des charges v1.0](CAHIER-DES-CHARGES.md).
 
 - [x] First boot (`grul-firstboot.service`)
 - [x] Détection matérielle + hyperviseur
-- [ ] Installateur < 5 min (questions : nom, user, usage)
-- [ ] Guest agents auto (VirtualBox, VMware, KVM, Hyper-V)
+- [x] Installateur < 5 min (`grul install` / `scripts/grul-install.sh`)
+- [x] Guest agents auto (VirtualBox, VMware, KVM, Hyper-V)
 
 ## v0.3 — CLI
 
@@ -30,7 +30,7 @@ Alignée sur le [Cahier des charges v1.0](CAHIER-DES-CHARGES.md).
 ## v0.4 — Optimisation
 
 - [x] `grul optimize` (via tune)
-- [ ] `grul repair` complet (grub, journaux, permissions)
+- [x] `grul repair` (apt, dpkg, reset-failed, vacuum journal optionnel)
 - [x] `grul clean`
 - [ ] `grul benchmark`
 

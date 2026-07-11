@@ -44,22 +44,14 @@ pub fn run_vm_setup(opts: &VmSetupOptions) -> Result<Vec<String>, String> {
         run_cmd("grul-tune", &["apply", "--profile", "vm-minimal", "--yes"], &mut actions)?;
     }
 
-    // Guest agent QEMU/KVM
-    if matches!(vm.kind, VirtKind::Kvm | VirtKind::Qemu) {
-        if opts.dry_run {
-            actions.push("[dry-run] apt-get install -y qemu-guest-agent && systemctl enable --now qemu-guest-agent".into());
-        } else {
-            run_cmd(
-                "apt-get",
-                &["install", "-y", "qemu-guest-agent"],
-                &mut actions,
-            )?;
-            let _ = run_cmd(
-                "systemctl",
-                &["enable", "--now", "qemu-guest-agent.service"],
-                &mut actions,
-            );
-        }
+    // Guest agents / pilotes hyperviseur
+    if opts.dry_run {
+        actions.push("[dry-run] grul-doctor drivers install".into());
+    } else {
+        let driver_lines = crate::drivers::run_install(&crate::drivers::DriverInstallOptions {
+            dry_run: false,
+        })?;
+        actions.extend(driver_lines);
     }
 
     // cloud-init usually preinstalled on cloud images

@@ -49,7 +49,7 @@ if [[ "$GRUL_CHANNEL_VM" == "true" && -f "$ROOT/configs/grul-channel-vm.toml" ]]
 fi
 
 echo "==> Configuration VM optimale"
-grul-doctor vm-setup --yes --yes
+grul-doctor vm-setup --yes
 
 echo ""
 echo "✓ GRUL VM prête"

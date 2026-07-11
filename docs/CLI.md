@@ -29,8 +29,9 @@ Une seule façon d'administrer le système. Les outils internes (`grul-detect`, 
 | `grul rollback` | ✅ | `grul-snap rollback` (opt-in) |
 | `grul backup` / `restore` | ✅ | via grul-snap |
 | `grul clean` | ✅ | autoremove + clean |
-| `grul repair` | 🔶 | dpkg + apt -f (v0.4 complet) |
-| `grul drivers` | 🔶 | info + vm optimize |
+| `grul repair` | ✅ | `grul-doctor repair` (dpkg, apt -f, check) |
+| `grul drivers` | ✅ | statut VM + `grul drivers install` |
+| `grul install` | ✅ | `scripts/grul-install.sh` interactif |
 | `grul security` | 🔶 | aperçu sécurité |
 | `grul logs` | 🔶 | journalctl err |
 | `grul services` | 🔶 | tune status + failed units |

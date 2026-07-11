@@ -31,6 +31,9 @@ Une seule commande pour administrer votre Debian :
   grul vm optimize     Setup VM optimal
   grul rollback        Restaurer snapshot (Btrfs)
   grul repair          Réparer apt/paquets
+  grul drivers         Guest agents / pilotes VM
+  grul drivers install Installer guest tools
+  grul install         Installateur interactif (< 5 min)
   grul clean           Nettoyage apt
   grul uninstall       Retirer la couche GRUL
 
@@ -113,10 +116,11 @@ fn print_repair() {
     println!(
         r#"grul repair — réparation système
 
-  sudo grul repair              dpkg --configure -a + apt -f install
+  sudo grul repair              dpkg + apt -f + apt check + reset-failed
+  sudo grul repair --vacuum-journal
   sudo grul repair --dry-run
 
-Prévu v0.4 : grub, permissions, journaux corrompus
+Prévu v0.4+ : grub, permissions
 "#
     );
 }

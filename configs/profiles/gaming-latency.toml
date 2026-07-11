@@ -1,0 +1,24 @@
+# Profil GRUL : gaming / faible latence
+
+[profile]
+id = "gaming-latency"
+description = "Latence réduite — CPU governor performance, réseau gaming"
+
+[sysctl]
+"vm.swappiness" = 1
+"net.core.default_qdisc" = "fq"
+"net.ipv4.tcp_fastopen" = 3
+
+[services]
+mask = []
+
+[filesystem]
+ssd_noatime = true
+enable_fstrim = true
+
+[packages.current]
+suggest = ["mesa-vulkan-drivers", "linux-image-amd64"]
+
+[grul]
+# Phase 1 : grul-config proposera performance governor via power-profiles-daemon
+cpu_governor_hint = "performance"

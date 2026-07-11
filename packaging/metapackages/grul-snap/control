@@ -1,0 +1,11 @@
+Package: grul-snap
+Version: 0.1.0
+Section: admin
+Priority: optional
+Architecture: amd64
+Depends: btrfs-progs
+Recommends: grul-core
+Maintainer: GRUL Project <grul@localhost>
+Description: GRUL Snap — snapshots Btrfs optionnels
+ Paquet optionnel. Installez-le seulement si vous voulez des rollbacks
+ avant les mises à jour GRUL Current. Non requis pour grul-update.

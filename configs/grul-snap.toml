@@ -1,0 +1,13 @@
+# Configuration grul-snap — optionnel, /etc/grul/snap.toml
+# Installez le paquet grul-snap seulement si vous voulez des rollbacks Btrfs.
+
+[snap]
+# disabled | auto (défaut) | enabled
+mode = "auto"
+backend = "btrfs"
+max_snapshots = 5
+# Ne pas bloquer grul-update si le snapshot échoue
+fail_open = true
+# current-only = avant upgrades canal Current | any-upgrade = toujours
+trigger = "current-only"
+snapshot_dir = "/.snapshots/grul"

@@ -1,0 +1,2 @@
+# GRUL Core — outils système (grul-detect, grul-tune, grul-update)
+deb [signed-by=/usr/share/keyrings/grul-archive-keyring.gpg] https://repo.grul.org/debian grul-core main

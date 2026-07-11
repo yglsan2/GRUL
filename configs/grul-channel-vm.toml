@@ -1,0 +1,24 @@
+# Canaux GRUL pour VMs — Core uniquement, sécurité auto
+# /etc/grul/channel.toml (variante grul-vm)
+
+[channel]
+core_enabled = true
+current_enabled = false
+edge_enabled = false
+
+[sources]
+uri = "https://repo.grul.org/debian"
+core_suite = "grul-core"
+current_suite = "grul-current"
+edge_suite = "grul-edge"
+components = "main"
+
+[packages]
+
+[update]
+snapshot_before_current = false
+auto_security = true
+show_changelog = false
+
+[snap]
+mode = "disabled"

@@ -1,0 +1,22 @@
+# Profil GRUL : bureau équilibré (défaut)
+
+[profile]
+id = "desktop-balanced"
+description = "Poste de travail général — stabilité et confort"
+
+[sysctl]
+"vm.swappiness" = 10
+"net.core.default_qdisc" = "fq_codel"
+
+[services]
+# systemd units à masquer (optionnel, non destructif)
+mask = []
+
+[filesystem]
+# Recommandations — appliquées par grul-tune avec confirmation
+ssd_noatime = true
+enable_fstrim = true
+
+[packages.current]
+# Suggérer canal Current pour ces paquets
+suggest = ["firefox-esr", "libreoffice", "mesa-vulkan-drivers"]

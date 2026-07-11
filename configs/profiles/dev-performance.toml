@@ -1,0 +1,26 @@
+# Profil GRUL : développement
+
+[profile]
+id = "dev-performance"
+description = "Builds fréquents, conteneurs, compilateurs récents"
+
+[sysctl]
+"vm.swappiness" = 5
+"kernel.pid_max" = 4194304
+
+[services]
+mask = []
+
+[filesystem]
+ssd_noatime = true
+enable_fstrim = true
+
+[packages.current]
+suggest = ["firefox-esr", "mesa-vulkan-drivers"]
+
+[packages.edge]
+# Active le dépôt Edge si l'utilisateur accepte
+suggest = ["golang-go", "rustc", "docker.io", "kubectl"]
+
+[grul]
+enable_edge_channel_prompt = true

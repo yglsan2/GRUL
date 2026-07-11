@@ -1,0 +1,13 @@
+[Unit]
+Description=GRUL — mises à jour de sécurité automatiques
+Documentation=https://github.com/grul-project/grul
+ConditionPathExists=/etc/grul/channel.toml
+
+[Service]
+Type=oneshot
+Environment=DEBIAN_FRONTEND=noninteractive
+ExecStart=/usr/bin/grul-update upgrade --security-only -y
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

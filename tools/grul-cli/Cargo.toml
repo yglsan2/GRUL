@@ -1,0 +1,14 @@
+[package]
+name = "grul-cli"
+description = "GRUL — interface en ligne de commande unifiée"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "grul"
+path = "src/main.rs"
+
+[dependencies]
+grul-common = { path = "../grul-common" }
+clap = { version = "4", features = ["derive"] }

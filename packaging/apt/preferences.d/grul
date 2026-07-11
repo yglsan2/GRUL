@@ -1,0 +1,20 @@
+Package: *
+Pin: release o=GRUL,a=grul-core
+Pin-Priority: 500
+
+Package: *
+Pin: release o=GRUL,a=grul-current
+Pin-Priority: 450
+
+Package: *
+Pin: release o=GRUL,a=grul-edge
+Pin-Priority: 400
+
+Package: *
+Pin: release o=Debian,a=stable
+Pin-Priority: 500
+
+# Les bibliothèques système critiques restent Debian Stable
+Package: libc6 libssl3 systemd libstdc++6
+Pin: release o=Debian,a=stable
+Pin-Priority: 1001

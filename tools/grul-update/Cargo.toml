@@ -1,0 +1,20 @@
+[package]
+name = "grul-update"
+description = "Mises à jour GRUL — wrapper apt avec canaux Core / Current / Edge"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "grul-update"
+path = "src/main.rs"
+
+[dependencies]
+grul-common = { path = "../grul-common" }
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+chrono = "0.4"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"

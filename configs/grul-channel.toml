@@ -1,0 +1,31 @@
+# Configuration canaux GRUL — /etc/grul/channel.toml
+
+[channel]
+core_enabled = true
+current_enabled = true
+edge_enabled = false
+
+[sources]
+uri = "https://repo.grul.org/debian"
+core_suite = "grul-core"
+current_suite = "grul-current"
+edge_suite = "grul-edge"
+components = "main"
+
+[packages]
+# Canal par paquet — comme les composants Ubuntu (main/restricted/universe)
+firefox-esr = "current"
+firefox = "current"
+libreoffice = "current"
+linux-image-amd64 = "current"
+mesa-vulkan-drivers = "current"
+firmware-linux = "current"
+golang-go = "edge"
+rustc = "edge"
+docker.io = "edge"
+kubectl = "edge"
+
+[update]
+snapshot_before_current = true
+auto_security = true
+show_changelog = false

@@ -1,0 +1,10 @@
+Package: grul-vm
+Version: 0.1.0
+Section: admin
+Priority: optional
+Architecture: amd64
+Depends: grul-core (>= 0.1.0), grul-doctor (>= 0.1.0)
+Recommends: qemu-guest-agent, cloud-init
+Description: GRUL VM — métapaquet machines virtuelles
+ Configuration optimale pour VMs : profil vm-minimal, canal Core,
+ mises à jour sécurité auto, guest agent. Idéal Proxmox/KVM/cloud.

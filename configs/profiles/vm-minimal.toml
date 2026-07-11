@@ -1,0 +1,34 @@
+# Profil GRUL : machine virtuelle (KVM, VMware, cloud…)
+# Cible : VMs dev, CI, homelab — faible empreinte, mises à jour auto
+
+[profile]
+id = "vm-minimal"
+description = "VM optimisée — services réduits, guest agent, sécurité auto"
+
+[sysctl]
+"vm.swappiness" = 10
+"vm.dirty_ratio" = 10
+"vm.dirty_background_ratio" = 3
+"net.ipv4.tcp_slow_start_after_idle" = 0
+
+[services]
+mask = [
+  "bluetooth.service",
+  "cups.service",
+  "avahi-daemon.service",
+  "ModemManager.service",
+  "udisks2.service",
+]
+
+[filesystem]
+ssd_noatime = true
+enable_fstrim = true
+
+[packages.current]
+suggest = []
+
+[grul]
+# Recommandations affichées par grul-doctor vm-setup
+guest_agent_packages = ["qemu-guest-agent", "cloud-init"]
+enable_security_timer = true
+current_channel = false

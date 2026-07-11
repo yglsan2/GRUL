@@ -1,0 +1,19 @@
+# Profil GRUL : serveur minimal
+
+[profile]
+id = "server-minimal"
+description = "Faible empreinte — services réduits, stabilité maximale"
+
+[sysctl]
+"vm.swappiness" = 1
+"net.ipv4.tcp_slow_start_after_idle" = 0
+
+[services]
+mask = ["bluetooth.service", "cups.service", "avahi-daemon.service"]
+
+[filesystem]
+ssd_noatime = false
+enable_fstrim = true
+
+[packages.current]
+suggest = []

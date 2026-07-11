@@ -1,0 +1,42 @@
+#cloud-config
+# GRUL — cloud-init pour VM Debian (Proxmox, AWS, GCP, Azure, libvirt)
+# Usage : injecter user-data au démarrage de la VM
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - git
+  - curl
+  - ca-certificates
+  - build-essential
+  - pkg-config
+  - libssl-dev
+  - qemu-guest-agent
+  - cloud-init
+
+write_files:
+  - path: /etc/grul/cloud-init-installed
+    content: |
+      GRUL cloud-init profile
+      Installed: {{ v1.instance_id }}
+    permissions: '0644'
+
+runcmd:
+  - systemctl enable --now qemu-guest-agent || true
+  - |
+    if [ ! -f /opt/grul/.bootstrapped ]; then
+      if [ -d /opt/grul/GRUL ]; then
+        bash /opt/grul/GRUL/scripts/vm-bootstrap.sh
+      elif [ -f /tmp/grul-vm-bootstrap.sh ]; then
+        bash /tmp/grul-vm-bootstrap.sh
+      else
+        echo "GRUL: montez le repo dans /opt/grul/GRUL ou fournissez vm-bootstrap.sh"
+        grul-detect 2>/dev/null || true
+      fi
+      mkdir -p /opt/grul && touch /opt/grul/.bootstrapped
+    fi
+
+final_message: |
+  GRUL VM cloud-init terminé.
+  Commandes : grul-doctor | grul-update status | sudo grul-update upgrade

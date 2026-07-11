@@ -1,0 +1,14 @@
+[Unit]
+Description=GRUL — premier démarrage (VM ou bare metal)
+ConditionPathExists=!/var/lib/grul/firstboot-done
+After=network-online.target
+Wants=network-online.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/grul/scripts/grul-firstboot.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

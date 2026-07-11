@@ -1,0 +1,11 @@
+[Unit]
+Description=GRUL — vérification quotidienne des mises à jour de sécurité
+Documentation=https://github.com/grul-project/grul
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=45min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
